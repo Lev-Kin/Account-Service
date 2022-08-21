@@ -1,14 +1,13 @@
 package account.repository;
 
-import account.business.User;
+import account.business.data.User;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-public interface UserRepository extends CrudRepository<User, String> {
-
+@Repository
+public interface UserRepository extends CrudRepository<User, Long> {
     Optional<User> findByEmailIgnoreCase(String email);
-
-    Optional<User> findTopByEmailIgnoreCase(String email);
 }
 

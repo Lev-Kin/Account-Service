@@ -29,6 +29,13 @@
             <option value="$PROJECT_DIR$/Topics/Comparing dates and time/What is correct" />
             <option value="$PROJECT_DIR$/Topics/Comparing dates and time/What is true" />
             <option value="$PROJECT_DIR$/Topics/Comparing dates and time/Which return true" />
+            <option value="$PROJECT_DIR$/Topics/Currying/A correct lambda expression" />
+            <option value="$PROJECT_DIR$/Topics/Currying/Curried function" />
+            <option value="$PROJECT_DIR$/Topics/Currying/Multifunctional mapper" />
+            <option value="$PROJECT_DIR$/Topics/Currying/Reducer operator" />
+            <option value="$PROJECT_DIR$/Topics/Currying/String concatenation" />
+            <option value="$PROJECT_DIR$/Topics/Currying/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Currying/Types of a curried function" />
             <option value="$PROJECT_DIR$/util" />
           </set>
         </option>
