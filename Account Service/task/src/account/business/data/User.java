@@ -11,7 +11,7 @@ import java.util.Set;
 @Table
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     @NotEmpty
     private String name;
@@ -24,12 +24,10 @@ public class User {
     @NotEmpty
     @Size(min = 12, message = "Password length must be 12 chars minimum!")
     private String password;
+    private Integer failedAttempt = 0;
+    private Boolean isNonLocked = true;
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> role = new HashSet<>();
-
-//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private Set<Salary> salaries = new HashSet<>();
 
     public User() {
     }
@@ -90,22 +88,21 @@ public class User {
         this.role = role;
     }
 
-//    public Set<Salary> getSalaries() {
-//        return salaries;
-//    }
-//
-//    public void setSalaries(Set<Salary> salaries) {
-//        this.salaries = salaries;
-//    }
+    public boolean isNonLocked() {
+        return isNonLocked;
+    }
 
-//    public Set<Group> getUserGroups() {
-//        return userGroups;
-//    }
-//
-//    public void setUserGroups(Set<Group> userGroups) {
-//        this.userGroups = userGroups;
-//    }
+    public int getFailedAttempt() {
+        return failedAttempt;
+    }
 
+    public void setFailedAttempt(int failedAttempt) {
+        this.failedAttempt = failedAttempt;
+    }
+
+    public void setNonLocked(boolean nonLocked) {
+        isNonLocked = nonLocked;
+    }
 
 }
 

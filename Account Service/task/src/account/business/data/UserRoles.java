@@ -1,7 +1,7 @@
 package account.business.data;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class UserRoles {
     private long id;
@@ -15,7 +15,7 @@ public class UserRoles {
         this.name = name;
         this.lastname = lastname;
         this.email = email;
-        Set<String> tmp = new HashSet<>();
+        Set<String> tmp = new TreeSet<>();
         for (String s : roles) {
             tmp.add("ROLE_" + s);
         }
@@ -27,7 +27,7 @@ public class UserRoles {
         this.name = user.getName();
         this.lastname = user.getLastname();
         this.email = user.getEmail();
-        Set<String> tmp = new HashSet<>();
+        Set<String> tmp = new TreeSet<>();
         Set<String> roles = user.getRole();
         for (String s : roles) {
             tmp.add("ROLE_" + s);

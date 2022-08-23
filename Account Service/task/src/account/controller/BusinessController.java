@@ -17,17 +17,19 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api")
 @Validated
 public class BusinessController {
+
     @Autowired
-    PaymentService paymentServices;
+    private PaymentService paymentService;
 
     @GetMapping(value = "/empl/payment")
     public List<SalaryOut> get(@AuthenticationPrincipal UserDetails details) {
         String email = details.getUsername();
-        return paymentServices.get(email);
+        return paymentService.get(email);
     }
 
     @GetMapping(value = "/empl/payment", params = "period")
@@ -35,7 +37,7 @@ public class BusinessController {
         Salary.checkPeriodFormat(period);
         String email = details.getUsername();
         try {
-            return paymentServices.get(email, period);
+            return paymentService.get(email, period);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
@@ -43,17 +45,12 @@ public class BusinessController {
 
     @PostMapping("/acct/payments")
     public UploadSuccess upload(@RequestBody @NotEmpty List<Salary> salaryList) {
-//        for (Salary s : salaryList) {
-//            if (s.getSalary() < 0) {
-//                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-//            }
-//        }
-        return paymentServices.upload(salaryList);
+        return paymentService.upload(salaryList);
     }
 
     @PutMapping("/acct/payments")
     public UpdateSuccess update(@Valid @RequestBody Salary salary) {
-        return paymentServices.update(salary);
+        return paymentService.update(salary);
     }
 }
 
