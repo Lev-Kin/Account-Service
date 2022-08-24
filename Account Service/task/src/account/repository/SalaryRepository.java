@@ -12,6 +12,7 @@ import java.util.Optional;
 @Repository
 public interface SalaryRepository extends CrudRepository<Salary, SalaryId> {
     Optional<Salary> findByEmployeeAndPeriod(String employee, YearMonth period);
+
     Optional<List<Salary>> findByEmployeeOrderByPeriodDesc(String employee);
 }
 

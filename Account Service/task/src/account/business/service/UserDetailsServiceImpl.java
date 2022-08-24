@@ -18,15 +18,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        String emailLower = email.toLowerCase();
-        Optional<User> userOptional = users.findByEmailIgnoreCase(emailLower);
-
+        Optional<User> userOptional = users.findByEmailIgnoreCase(email);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            user.setEmail(emailLower);
             return new UserDetailsImpl(user);
         }
-
         throw new UsernameNotFoundException("Not found: " + email);
     }
 }
